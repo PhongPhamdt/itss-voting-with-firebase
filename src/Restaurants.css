@@ -1,0 +1,9 @@
+.Restaurants {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ant-card {
+  margin: 5px !important;
+}
