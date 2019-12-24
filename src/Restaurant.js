@@ -1,17 +1,38 @@
 import React, { Component, PropTypes } from 'react';
 import map from 'lodash/map';
 import './Restaurant.css';
-import { Card, Button } from 'antd';
-
+import { Card, Button, Modal, Tag, Input, Typography } from 'antd';
+const { TextArea } = Input;
+const { Text } = Typography;
 class Restaurant extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+  }
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  handleCancel = () => {
+    this.setState({ visible: false });
+  };
 
   render() {
-    const { name, user, votes, handleDeselect, handleSelect } = this.props;
+    const { name, user, address, description, votes, handleDeselect, handleSelect } = this.props;
     const userHasSelected = votes && Object.keys(votes).includes(user.uid);
     return (
-      <Card 
+      <Card
         className='Restaurant'
-        title={name}
+        title={
+          <div>
+            <span>{name}</span><br />
+            <a onClick={this.showModal}>Details</a>
+          </div>
+        }
         actions={[
           <Button type="primary" onClick={handleSelect} disabled={userHasSelected}> Vote: YES </Button>,
           <Button type="dashed" onClick={handleDeselect} disabled={!userHasSelected}> Vote: NAH </Button>
@@ -21,8 +42,23 @@ class Restaurant extends Component {
           Votes: {(votes && Object.keys(votes).length || 0)}
         </p>
         <div>
-          { votes && map(votes, (vote, key) => <p key={key}>{ vote }</p>) }
+          {votes && map(votes, (vote, key) => <p key={key}>{vote}</p>)}
         </div>
+        <Modal
+          visible={this.state.visible}
+          onCancel={this.handleCancel}
+          title="Restaurants Info"
+          footer={[
+            <Button key="back" onClick={this.handleCancel}>
+              Return
+            </Button>
+          ]}
+        >
+          <div></div><Text>Name: <Tag color="red">{name}</Tag></Text>
+          <div style={{ marginTop: 10 }}><Text>Address: <Text underline strong>{address ? address : 'None'}</Text></Text></div>
+          <div style={{ marginTop: 10 }}><Text>Description: <br /><TextArea value={description ? description : 'None'} disabled rows={4}></TextArea></Text></div>
+        </Modal>
+
       </Card>
     );
   }
@@ -30,6 +66,8 @@ class Restaurant extends Component {
 
 Restaurant.propTypes = {
   name: PropTypes.string,
+  address: PropTypes.string,
+  description: PropTypes.string,
   votes: PropTypes.object,
   user: PropTypes.object,
   handleSelect: PropTypes.func,

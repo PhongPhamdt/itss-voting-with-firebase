@@ -6,40 +6,40 @@ import './Restaurants.css';
 
 class Restaurants extends Component {
   constructor(props) {
-    super(props);      
+    super(props);
   }
 
   handleSelect(key) {
-    const currentUser = this.props.user; 
+    const currentUser = this.props.user;
     database.ref('/restaurants')
-            .child(key)
-            .child('votes')
-            .child(currentUser.uid)
-            .set(currentUser.displayName);
+      .child(key)
+      .child('votes')
+      .child(currentUser.uid)
+      .set(currentUser.displayName);
   }
 
   handleDeselect(key) {
     const currentUser = this.props.user;
     database.ref('/restaurants')
-            .child(key)
-            .child('votes')
-            .child(currentUser.uid)
-            .remove();
+      .child(key)
+      .child('votes')
+      .child(currentUser.uid)
+      .remove();
   }
 
   render() {
     const { user, restaurants } = this.props;
     return (
-      <section className='Restaurants'>
-        { 
-          map(restaurants, (restaurant, key) => {
-            return <Restaurant 
-                      key={key} 
-                      {...restaurant}
-                      user={user}
-                      handleSelect={() => this.handleSelect(key)}
-                      handleDeselect={() => this.handleDeselect(key)}
-                    />;
+      <section className='Restaurants' style={{ marginTop: 20, marginBottom: 20 }}>
+        {
+          restaurants && map(restaurants, (restaurant, key) => {
+            return <Restaurant
+              key={key}
+              {...restaurant}
+              user={user}
+              handleSelect={() => this.handleSelect(key)}
+              handleDeselect={() => this.handleDeselect(key)}
+            />;
           })
         }
       </section>

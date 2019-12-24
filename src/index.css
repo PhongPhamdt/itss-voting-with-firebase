@@ -20,7 +20,7 @@ a.button {
   text-decoration: none;
 }
 
-button, input[type="submit"], .button {
+/* button, input[type="submit"], .button {
   background-color: hsla(191, 76%, 47%, 1);
   border-radius: 3px;
   border: 1px solid hsla(191, 76%, 37%, 1);
@@ -31,7 +31,7 @@ button, input[type="submit"], .button {
   outline: none;
   padding: 0.5rem 1rem;
   transition: 0.2s all;
-}
+} */
 
 @media screen and (max-width: 480px) {
   button, input[type="submit"], .button {
@@ -45,24 +45,24 @@ button:not(:last-child), input[type="submit"]:not(:last-child), .button :not(:la
   margin-right: 1em;
 }
 
-button:hover, input[type="submit"]:hover, .button:hover {
+/* button:hover, input[type="submit"]:hover, .button:hover {
   background-color: hsla(191, 76%, 57%, 1);
   border-color: hsla(191, 76%, 47%, 1);
-}
+} */
 
-button:active, input[type="submit"]:active, .button:active {
+/* button:active, input[type="submit"]:active, .button:active {
   background-color: hsla(191, 76%, 42%, 1);
   border-color: hsla(191, 76%, 32%, 1);
   box-shadow: inset 1px 1px 1px 0px rgba(0,0,0,0.20);
   transform: translate(1px, 1px);
-}
+} */
 
-button:disabled, input[type="submit"]:disabled, .button:disabled {
+/* button:disabled, input[type="submit"]:disabled, .button:disabled {
   background-color: white;
   border-color: #aaa;
   box-shadow: none;
   color: #aaa;
-}
+} */
 
 button.forward:after, input[type="submit"].forward:after, .button.forward:after {
   content: ' →';
@@ -72,7 +72,7 @@ button.back:before, input[type="submit"].back:before, .button.back:before {
   content: '← ';
 }
 
-button.secondary, input[type="submit"].secondary, .button.secondary {
+/* button.secondary, input[type="submit"].secondary, .button.secondary {
   background-color: white;
   box-sizing: border-box;
   color: hsla(191, 76%, 47%, 1);
@@ -121,4 +121,4 @@ input:not([type="submit"]) {
   margin-bottom: 0.5em;
   padding: 1em 0.5em;
   width: 100%;
-}
+} */

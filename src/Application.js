@@ -42,7 +42,7 @@ class Application extends Component {
           {
             currentUser &&
             <div>
-              <NewRestaurant />
+              <NewRestaurant user={currentUser} />
               <Restaurants restaurants={restaurants} user={currentUser} />
               <CurrentUser user={currentUser} />
             </div>
