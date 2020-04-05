@@ -18,7 +18,7 @@ class NewRestaurant extends Component {
   }
 
   handleSubmit() {
-    event.preventDefault();
+    // event.preventDefault();
     const { user } = this.props;
     this.restaurantsRef.push({ name: this.state.name, user: user.displayName, uid: user.uid, address: this.state.address, description: this.state.description })
       .then(this.setState({ name: '' }))
