@@ -17,3 +17,7 @@
 .Restaurant--votes {
   text-align: left;
 }
+
+.Restaurant--count span{
+  color: red;
+}
