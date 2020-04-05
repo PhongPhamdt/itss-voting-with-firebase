@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import map from 'lodash/map';
 import './Restaurant.css';
-import { Card, Button, Modal, Tag, Input, Typography } from 'antd';
+import { Card, Button, Modal, Tag, Input, Typography, Tooltip } from 'antd';
 const { TextArea } = Input;
 const { Text } = Typography;
 class Restaurant extends Component {
@@ -38,12 +38,12 @@ class Restaurant extends Component {
           <Button type="dashed" onClick={handleDeselect} disabled={!userHasSelected}> Vote: NAH </Button>
         ]}
       >
-        <p className='Restaurant--count'>
-          Votes: {(votes && Object.keys(votes).length || 0)}
-        </p>
-        <div>
-          {votes && map(votes, (vote, key) => <p key={key}>{vote}</p>)}
-        </div>
+        <h3 className='Restaurant--count'>
+          Votes:
+          <Tooltip title={votes && map(votes, (vote, key) => <p key={key}>{vote}</p>)}>
+            <span> {(votes && Object.keys(votes).length || 0)}</span>
+          </Tooltip>
+        </h3>
         <Modal
           visible={this.state.visible}
           onCancel={this.handleCancel}
