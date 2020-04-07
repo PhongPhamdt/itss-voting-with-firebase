@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { auth } from './firebase';
 import './CurrentUser.css';
-import { Card, Button, Avatar, Tag, PageHeader } from 'antd';
+import { Button, PageHeader } from 'antd';
 
 const CurrentUser = ({ user }) => {
   return (
@@ -9,8 +9,7 @@ const CurrentUser = ({ user }) => {
       className="CurrentUser"
       title="Lunch Rush"
       extra={[
-        <Button type="danger" onClick={() => auth.signOut()}>Sign Out</Button>,
-		
+        <Button type="danger" onClick={() => auth.signOut()}>Sign Out</Button>
       ]}
       avatar={{ src: user.photoURL }}
       subTitle={user.displayName + "\n" + user.email}
@@ -29,4 +28,3 @@ CurrentUser.propTypes = {
 };
 
 export default CurrentUser;
-
