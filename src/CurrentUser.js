@@ -1,29 +1,21 @@
 import React, { PropTypes } from 'react';
 import { auth } from './firebase';
 import './CurrentUser.css';
-import { Card, Button, Avatar, Tag } from 'antd';
+import { Card, Button, Avatar, Tag, PageHeader } from 'antd';
 
 const CurrentUser = ({ user }) => {
   return (
-    <Card
+    <PageHeader
       className="CurrentUser"
-      cover={
-        <Avatar
-          size={160}
-          shape="square"
-          src={user.photoURL}
-          alt={user.displayName}
-        />
-      }
+      title="Lunch Rush"
+      extra={[
+        <Button type="danger" onClick={() => auth.signOut()}>Sign Out</Button>,
+		
+      ]}
+      avatar={{ src: user.photoURL }}
+      subTitle={user.displayName + "\n" + user.email}
     >
-      <div className="CurrentUser--identification">
-        <h3>{user.displayName}</h3>
-        <Tag style={{display: 'block', marginBottom: 15}}>{user.email}</Tag>
-        <Button type="danger" onClick={() => auth.signOut()}>
-          Sign Out
-        </Button>
-      </div>
-    </Card>
+    </PageHeader>
   );
 };
 
@@ -37,3 +29,4 @@ CurrentUser.propTypes = {
 };
 
 export default CurrentUser;
+
