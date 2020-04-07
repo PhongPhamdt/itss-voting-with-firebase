@@ -5,7 +5,7 @@ import SignIn from './SignIn';
 import NewRestaurant from './NewRestaurant';
 import Restaurants from './Restaurants';
 import './Application.css';
-import { Typography, PageHeader } from 'antd';
+import { Typography, PageHeader, Button, DropdownMenu } from 'antd';
 const { Title } = Typography;
 
 class Application extends Component {
@@ -32,19 +32,15 @@ class Application extends Component {
     const { currentUser, restaurants } = this.state;
     return (
       <div className='Application'>
-        <PageHeader 
-          title={
-            <Title>Lunch Rush</Title>
-          }
-        />
-        <div>
+	    <div>
           {!currentUser && <SignIn />}
           {
             currentUser &&
             <div>
+              
+              <CurrentUser user={currentUser} />
               <NewRestaurant user={currentUser} />
               <Restaurants restaurants={restaurants} user={currentUser} />
-              <CurrentUser user={currentUser} />
             </div>
           }
         </div>
