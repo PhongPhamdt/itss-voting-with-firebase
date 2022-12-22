@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.26.1",
-    "firebase": "^3.6.10",
+    "firebase": "^9.15.0",
     "lodash": "^4.17.4",
     "react": "15.4.2",
     "react-dom": "15.4.2"
